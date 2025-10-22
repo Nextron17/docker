@@ -1,0 +1,22 @@
+# Configuración con YAML para automatizar procesos y crear contenedores e imágenes
+
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backendprueba # La carpeta donde se encontrara el archivo docker
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    image: backend:1 #para nombras la imagn y que no le deje por defecto
+    restart: always  # Reinicia el contenedor si se detiene
+
+  frontend:
+    build:
+      context: ./frontend-proyecto
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    image: frontend:1
+    restart: always
